@@ -25,7 +25,7 @@ def replace_swish_with_relu(model):
 
 
 
-def GRU_TUNED84(x,y,trans_flag,pretrained_network,layer_fix_ind):
+def GRU_TUNED84(x,y,trans_flag,pretrained_network):
     '''
     Same as GRU_VANILLA but with dropout AFTER each dense layer.
     '''
@@ -73,12 +73,18 @@ def GRU_TUNED84(x,y,trans_flag,pretrained_network,layer_fix_ind):
         jsonFILE.close()
         model=model_from_json(loadedModel)
         model.load_weights(pretrained_network[1])
+
+#################
         model=replace_linear_with_Lrelu(model)
+#################
+
         alllayers=model.layers
+
+####################
         layer_fix_ind=[1,2,5]
         for l in layer_fix_ind:
             alllayers[l].trainable=False
-
+#####################
   
     
 

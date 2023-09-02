@@ -373,7 +373,7 @@ def runModels(ModelFuncPointer,
         resultsFile = os.path.join("./results/",resultsFilename)
 
     x,y = TrainGenerator.__getitem__(0)
-    model = ModelFuncPointer(x,y,trans_flag,pretrained_network,layer_fix_ind)
+    model = ModelFuncPointer(x,y,trans_flag,pretrained_network)
 
     
 
