@@ -5,7 +5,7 @@ Authors: Jeff Adrion, Andrew Kern, Jared Galloway
 from imports import *
 
 
-def replace_swish_with_relu(model):
+def replace_linear_with_Lrelu(model):
     '''
     Modify passed model by replacing swish activation with relu
     '''
@@ -74,17 +74,23 @@ def GRU_TUNED84(x,y,trans_flag,pretrained_network):
         model=model_from_json(loadedModel)
         model.load_weights(pretrained_network[1])
 
-#################
-        model=replace_linear_with_Lrelu(model)
-#################
+###################################################
+        model=replace_linear_with_Lrelu(model) ####
+###################################################
+
+
+
 
         alllayers=model.layers
 
-####################
-        layer_fix_ind=[1,2,5]
-        for l in layer_fix_ind:
-            alllayers[l].trainable=False
-#####################
+
+
+
+#####################################################
+        layer_fix_ind=[1,2,5]            ############
+        for l in layer_fix_ind:          ############
+            alllayers[l].trainable=False ############
+#####################################################
   
     
 
